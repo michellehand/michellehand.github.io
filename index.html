@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -498,17 +497,14 @@
         </div>
 
         <div class="grid">
-          <article class="card">
-            <h3>GLP-1 Outcomes Modeling Dashboard</h3>
-            <p>
-              A healthcare analytics project exploring GLP-1 adherence, claims utilization, cost patterns, and employer-facing ROI questions.
-            </p>
-            <div class="project-meta">
-              <span class="tag">Python</span>
-              <span class="tag">SQL</span>
-              <span class="tag">Claims</span>
-              <span class="tag">Streamlit</span>
-            </div>
+          <div class="image-placeholder">Add GLP-1 dashboard screenshot</div>
+
+          <div class="image-placeholder">
+            <img src="images/your-image-name.png" alt="Rave Tableau Dashboard" style="width:100%; border-radius:16px;" />
+          </div>
+
+          <div class="image-placeholder">Add EdTech analysis screenshot</div>
+        </div>
             <div class="project-links">
               <a href="https://github.com/michellehand/GLP-1_Study" target="_blank" rel="noreferrer">Repo</a>
               <a href="YOUR-CASE-STUDY-LINK-HERE" target="_blank" rel="noreferrer">Case study</a>
@@ -583,12 +579,7 @@
 
         <div class="grid">
           <div class="image-placeholder">Add GLP-1 dashboard screenshot</div>
-          <div>
-            <img src="images/Rave_Dashboard_Screenshot.png" alt="Rave Tableau Dashboard" style="width:100%; border-radius:16px;" />
-            <p style="margin-top:10px; font-size:0.9rem; color: var(--muted);">
-              Tableau dashboard analyzing event intensity, sleep recovery, and behavioral patterns across music events.
-            </p>
-          </div>
+          <div class="image-placeholder">Add rave Tableau screenshot</div>
           <div class="image-placeholder">Add EdTech analysis screenshot</div>
         </div>
       </div>
@@ -638,35 +629,70 @@
     </section>
 
     <section id="about">
-      <div class="container about-layout">
-        <div class="portrait-card">
-          <div class="portrait-frame">
-            <img src="images/michelle-portrait.png" alt="Michelle Hand portrait" style="width:100%; height:100%; object-fit:cover; border-radius:20px;" />
+      <div class="container">
+
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+          <div>
+            <div class="section-kicker">About</div>
+            <h2>Journalist brain. Analyst toolkit.</h2>
           </div>
-        </div>
-        <div>
-          <div class="section-kicker">About</div>
-          <h2>Journalist brain. Analyst toolkit.</h2>
-          <p class="section-intro">
-            I came into analytics with a background in journalism, healthcare, and a high tolerance for ambiguity. That means I care about the story behind the metric, the assumptions behind the model, and the human decision waiting on the other side of the dashboard.
-          </p>
-          <p class="section-intro">
-            My best work happens when the question is messy: unclear definitions, imperfect data, conflicting stakeholder needs, and just enough chaos to make the answer worth chasing.
-          </p>
+          <button onclick="togglePhoto()" style="padding:8px 14px; border-radius:999px; border:1px solid var(--border); background:rgba(255,255,255,0.06); color:white; cursor:pointer;">
+            Toggle vibe
+          </button>
         </div>
 
-        <div class="card contact-card" id="contact">
-          <h3>Let’s connect</h3>
-          <p>
-            Open to healthcare analytics, data storytelling, strategy, and projects where the data needs both rigor and a backbone.
-          </p>
-          <div class="project-links">
-            <a href="mailto:michellehand@outlook.com">Email</a>
-            <a href="https://github.com/michellehand" target="_blank" rel="noreferrer">GitHub</a>
-            <a href="https://www.linkedin.com/in/michellehand/" target="_blank" rel="noreferrer">LinkedIn</a>
+        <div class="about-layout">
+
+          <!-- IMAGE -->
+          <div class="portrait-card">
+            <div class="portrait-frame">
+              <img id="portrait" src="images/michelle-professional.png" alt="Michelle Hand portrait" style="width:100%; height:100%; object-fit:cover; border-radius:20px;" />
+            </div>
+          </div>
+
+          <!-- TEXT -->
+          <div>
+            <p class="section-intro">
+              I came into analytics with a background in journalism, healthcare, and a high tolerance for ambiguity. That means I care about the story behind the metric, the assumptions behind the model, and the human decision waiting on the other side of the dashboard.
+            </p>
+            <p class="section-intro">
+              My best work happens when the question is messy: unclear definitions, imperfect data, conflicting stakeholder needs, and just enough chaos to make the answer worth chasing.
+            </p>
+          </div>
+
+        </div>
+
+        <!-- CONTACT -->
+        <div style="margin-top:40px;">
+          <div class="card contact-card" id="contact">
+            <h3>Let’s connect</h3>
+            <p>
+              Open to healthcare analytics, data storytelling, strategy, and projects where the data needs both rigor and a backbone.
+            </p>
+            <div class="project-links">
+              <a href="mailto:michellehand@outlook.com">Email</a>
+              <a href="https://github.com/michellehand" target="_blank" rel="noreferrer">GitHub</a>
+              <a href="https://www.linkedin.com/in/michellehand/" target="_blank" rel="noreferrer">LinkedIn</a>
+            </div>
           </div>
         </div>
+
       </div>
+
+      <!-- SCRIPT -->
+      <script>
+        let isAlt = false;
+        function togglePhoto() {
+          const img = document.getElementById('portrait');
+          if (!isAlt) {
+            img.src = 'images/michelle-portrait.png';
+          } else {
+            img.src = 'images/michelle-professional.png';
+          }
+          isAlt = !isAlt;
+        }
+      </script>
+
     </section>
   </main>
 
