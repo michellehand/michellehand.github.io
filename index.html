@@ -89,8 +89,8 @@
     }
     
     .logo-banner img {
-      width: 420px;  /* THIS is what makes it big */
-      max-width: 80vw; /* responsive safety */
+      width: 900px; /* ~3x bigger */
+      max-width: 90vw; /* keeps it responsive */
       height: auto;
       filter: drop-shadow(0 0 40px rgba(0,229,255,0.25));
     }
@@ -103,19 +103,30 @@
       background: rgba(7,7,13,0.72);
       border-bottom: 1px solid rgba(255,255,255,0.08);
     }
-    .nav-brand {
-      font-weight: 900;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      font-size: 0.95rem;
-      color: white;
-    }
+    
     nav {
       min-height: 64px;
       display: flex;
       align-items: center;
-      justify-content: flex-end;
-      gap: 24px;
+      justify-content: space-between; /* fixes alignment */
+    }
+    
+    .nav-brand {
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 1rem;
+      display: flex;
+      gap: 6px;
+    }
+    
+    .nav-brand .first {
+      color: var(--pink);
+      text-shadow: 0 0 12px rgba(255,45,149,0.6);
+    }
+    
+    .nav-brand .last {
+      color: white;
     }
 
     .nav-links {
@@ -471,7 +482,9 @@
 
   <header>
     <div class="container">
-      <div class="nav-brand">Michelle Hand</div>
+      <div class="nav-brand">
+          <span class="first">MICHELLE</span> <span class="last">HAND</span>
+      </div>
       <nav>
         <div class="nav-links">
           <a href="#projects">Projects</a>
