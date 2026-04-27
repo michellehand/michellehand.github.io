@@ -107,6 +107,20 @@
       background: rgba(7,7,13,0.72);
       border-bottom: 1px solid rgba(255,255,255,0.08);
     }
+  .logo-banner {
+    width: 100%;
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  
+  .logo-banner img {
+    height: 90px; /* adjust as needed */
+    width: auto;
+  }
 
     nav {
       min-height: 72px;
@@ -450,6 +464,9 @@
 </head>
 
 <body>
+  <div class="logo-banner">
+  <img src="images/logo.png" alt="Michelle Hand logo" />
+  </div>
   <header>
     <div class="container">
       <nav>
@@ -474,10 +491,6 @@
     <div class="eyebrow">
       Healthcare analytics · behavioral data · story-first insight
     </div>
-
-    <div class="hero-content">
-      <img src="images/logo.png" alt="Michelle Hand logo" class="hero-logo" />
-
       <h1 class="headline">
         Data, but make it <span class="gradient-text">feel something.</span>
       </h1>
