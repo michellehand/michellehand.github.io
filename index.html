@@ -202,8 +202,23 @@
       height: auto;
       opacity: 0.95;
     }
-
-    .button-row {
+      .hero-layout {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 40px;
+      }
+      
+      .hero-text {
+        max-width: 700px;
+      }
+      
+      .hero-logo-container img {
+        width: 200px;
+        height: auto;
+        opacity: 0.95;
+      }
+     .button-row {
       display: flex;
       gap: 14px;
       flex-wrap: wrap;
@@ -477,17 +492,22 @@
     <section class="hero">
       <div class="container">
         <div class="eyebrow">Healthcare analytics · behavioral data · story-first insight</div>
-        <div class="hero-headline-row">
-          <h1 class="headline">
-            Data, but make it <span class="gradient-text">feel something.</span>
-          </h1>
+        <div class="hero-layout">
+
+          <div class="hero-text">
+            <h1 class="headline">
+              Data, but make it <span class="gradient-text">feel something.</span>
+            </h1>
         
-          <img 
-            src="images/logo.png" 
-            alt="Michelle Hand logo"
-            class="hero-logo"
-          />
-        </div>
+            <p class="hero-copy">
+              I’m a healthcare data analyst who turns claims data, messy definitions, and weird human behavior into stories people can actually use.
+            </p>
+          </div>
+        
+          <div class="hero-logo-container">
+            <img src="images/full-logo.png" alt="Michelle Hand logo" />
+          </div>      
+      </div>
         <p class="hero-copy">
           I’m a healthcare data analyst who turns claims data, messy definitions, and weird human behavior into stories people can actually use. My work blends SQL, Python, dashboards, and the occasional underground-art-project impulse.
         </p>
