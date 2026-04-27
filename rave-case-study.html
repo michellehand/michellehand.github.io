@@ -176,7 +176,16 @@
 
     .card h3 { font-size: 1.25rem; margin-bottom: 8px; }
     .card p, .card li { color: var(--muted); }
-
+    .scroll-card {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.7s ease;
+    }
+    
+    .scroll-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
     .dashboard-shot {
       width: 100%;
       border-radius: 24px;
@@ -351,7 +360,33 @@
           <a class="button" href="index.html">Back to portfolio</a>
         </div>
 
-        <img class="dashboard-shot" src="images/Rave_Dashboard_Screenshot.png" alt="Rave Recovery Tableau dashboard screenshot" />
+      <div style="margin-top: 40px;">
+      
+        <div class="card scroll-card">
+          <h3>Event intensity vs next-day recovery</h3>
+          <img src="images/intensity-recovery.png" style="width:100%; border-radius:16px;" />
+          <p>
+            Higher intensity events generally led to larger drops in next-day sleep relative to baseline, but not always.
+          </p>
+        </div>
+      
+        <div class="card scroll-card" style="margin-top: 20px;">
+          <h3>Substance intensity vs recovery time</h3>
+          <img src="images/substance-recovery.png" style="width:100%; border-radius:16px;" />
+          <p>
+            Substance intensity showed the strongest relationship with extended recovery windows.
+          </p>
+        </div>
+      
+        <div class="card scroll-card" style="margin-top: 20px;">
+          <h3>Movement vs energy next day</h3>
+          <img src="images/steps-energy.png" style="width:100%; border-radius:16px;" />
+          <p>
+            High movement nights didn’t always mean worse recovery — suggesting context matters more than raw exertion.
+          </p>
+        </div>
+      
+      </div>      
       </div>
     </section>
 
@@ -581,5 +616,18 @@
       button.classList.add('active');
     }
   </script>
+  <script>
+    const cards = document.querySelectorAll('.scroll-card');
+    
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.2 });
+    
+    cards.forEach(card => observer.observe(card));
+</script>
 </body>
 </html>
