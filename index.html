@@ -4,21 +4,21 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Michelle Hand | Data Analyst Portfolio</title>
-  <meta name="description" content="Portfolio for Michelle Hand, a healthcare data analyst blending claims analytics, behavioral data, and data storytelling." />
+  <meta name="description" content="Portfolio for Michelle Hand, a healthcare data analyst focused on claims analytics, data storytelling, and human-centered insight." />
 
   <style>
     :root {
-      --bg: #07070d;
-      --panel: rgba(255,255,255,0.06);
-      --text: #fbfbff;
-      --muted: #c9c7d8;
-      --soft: #8f8ca3;
-      --pink: #ff2d95;
-      --cyan: #00e5ff;
-      --green: #39ff14;
-      --purple: #9d4edd;
-      --border: rgba(255,255,255,0.16);
-      --shadow: 0 24px 80px rgba(0,0,0,0.35);
+      --cream: #f6f0e8;
+      --paper: #fffaf3;
+      --espresso: #2f2520;
+      --brown: #4b3a32;
+      --taupe: #8c7a6b;
+      --sage: #6f8a75;
+      --rose: #b96f6f;
+      --gold: #b9905f;
+      --muted: #6d625c;
+      --border: rgba(75, 58, 50, 0.18);
+      --shadow: 0 24px 70px rgba(47, 37, 32, 0.14);
     }
 
     * {
@@ -32,35 +32,10 @@
     }
 
     body {
-      min-height: 100vh;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background:
-        radial-gradient(circle at 12% 8%, rgba(255,45,149,0.24), transparent 24%),
-        radial-gradient(circle at 86% 12%, rgba(0,229,255,0.18), transparent 25%),
-        radial-gradient(circle at 50% 105%, rgba(57,255,20,0.10), transparent 35%),
-        linear-gradient(135deg, #07070d 0%, #0c0714 45%, #030814 100%);
-      color: var(--text);
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--cream);
+      color: var(--espresso);
       line-height: 1.65;
-      overflow-x: hidden;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-      background-size: 52px 52px;
-      mask-image: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent 80%);
-      z-index: -1;
-    }
-
-    @keyframes gradientDrift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
     }
 
     .container {
@@ -69,137 +44,119 @@
     }
 
     a {
-      color: var(--cyan);
+      color: var(--espresso);
       text-decoration: none;
-      transition: 0.2s ease;
+      font-weight: 800;
     }
 
     a:hover {
-      color: white;
-      text-shadow: 0 0 12px rgba(0,229,255,0.7);
-    }
-    
-    .logo-banner {
-      width: 100%;
-      min-height: 80vh; /* take up MOST of screen */
-      background: #000;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    
-    .logo-banner img {
-      width: 600px; /* ~3x bigger */
-      max-width: 90vw; /* keeps it responsive */
-      height: auto;
-      filter: drop-shadow(0 0 40px rgba(0,229,255,0.25));
+      color: var(--rose);
     }
 
     header {
       position: sticky;
       top: 0;
       z-index: 10;
-      backdrop-filter: blur(18px);
-      background: rgba(7,7,13,0.72);
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+      background: rgba(246, 240, 232, 0.86);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
     }
-    
+
     nav {
-      min-height: 64px;
+      min-height: 72px;
       display: flex;
       align-items: center;
-      justify-content: space-between; /* fixes alignment */
+      justify-content: space-between;
+      gap: 24px;
     }
-    
+
     .nav-brand {
       font-weight: 900;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      font-size: 1rem;
-      display: flex;
-      gap: 8px;
-      align-items: center;
-      color: white;
+      font-size: 0.95rem;
     }
-    
-    .nav-brand:hover {
-      text-shadow: none;
-    }
-    
+
     .nav-brand .first {
-      color: var(--pink);
+      color: var(--rose);
     }
-    
+
     .nav-brand .last {
-      color: white;
+      color: var(--espresso);
     }
 
     .nav-links {
       display: flex;
       gap: 22px;
       flex-wrap: wrap;
-      font-size: 0.96rem;
-      font-weight: 800;
+      font-size: 0.92rem;
     }
 
     .hero {
-      min-height: calc(100vh - 170px);
+      min-height: calc(100vh - 72px);
       display: grid;
       align-items: center;
-      padding: 86px 0 96px;
+      padding: 72px 0;
+      background:
+        radial-gradient(circle at 20% 10%, rgba(185,111,111,0.14), transparent 28%),
+        radial-gradient(circle at 85% 30%, rgba(111,138,117,0.16), transparent 30%);
     }
 
-    .hero-content {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 56px;
+      align-items: center;
+    }
+
+    .portrait-card {
+      background: var(--paper);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .portrait-card img {
+      width: 100%;
+      display: block;
+      border-radius: 20px;
+      object-fit: cover;
     }
 
     .eyebrow {
-      display: inline-flex;
-      width: fit-content;
-      gap: 8px;
-      align-items: center;
-      padding: 8px 14px;
-      margin-bottom: 34px;
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      color: var(--green);
-      background: rgba(57,255,20,0.06);
-      font-size: 0.78rem;
+      color: var(--sage);
       font-weight: 900;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
+      font-size: 0.78rem;
+      margin-bottom: 18px;
     }
 
     h1 {
-      max-width: 980px;
-      font-size: clamp(3rem, 8vw, 7.4rem);
-      line-height: 0.92;
-      letter-spacing: -0.08em;
-      margin-bottom: 42px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(3rem, 6vw, 6rem);
+      line-height: 0.98;
+      letter-spacing: -0.055em;
+      margin-bottom: 26px;
     }
 
-    .gradient-text {
-      background: linear-gradient(90deg, var(--pink), var(--cyan), var(--purple), var(--green));
-      background-size: 260% 260%;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: gradientDrift 9s ease infinite;
+    .accent {
+      color: var(--rose);
     }
 
     .hero-copy {
-      max-width: 800px;
+      max-width: 680px;
       color: var(--muted);
-      font-size: clamp(1.1rem, 2vw, 1.35rem);
-      margin-bottom: 40px;
+      font-size: clamp(1.08rem, 2vw, 1.28rem);
+      margin-bottom: 32px;
     }
 
     .button-row {
       display: flex;
-      gap: 16px;
+      gap: 14px;
       flex-wrap: wrap;
-      margin-bottom: 44px;
+      margin-bottom: 34px;
     }
 
     .button {
@@ -209,52 +166,48 @@
       min-height: 48px;
       padding: 12px 22px;
       border-radius: 999px;
-      border: 1px solid var(--border);
-      color: white;
-      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--espresso);
+      background: transparent;
+      color: var(--espresso);
       font-weight: 900;
-      box-shadow: 0 0 0 rgba(0,0,0,0);
-    }
-
-    .button:hover {
-      transform: translateY(-2px);
-      text-decoration: none;
-      box-shadow: 0 0 22px rgba(0,229,255,0.22);
     }
 
     .button.primary {
-      border: none;
-      color: #080810;
-      background: linear-gradient(135deg, var(--pink), var(--cyan));
+      background: var(--espresso);
+      color: var(--cream);
+    }
+
+    .button:hover {
+      background: var(--rose);
+      border-color: var(--rose);
+      color: white;
     }
 
     .signal-row {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 14px;
-      max-width: 880px;
     }
 
     .signal {
-      padding: 16px;
+      background: rgba(255, 250, 243, 0.68);
       border: 1px solid var(--border);
       border-radius: 18px;
-      background: rgba(255,255,255,0.045);
+      padding: 16px;
     }
 
     .signal strong {
       display: block;
-      color: white;
       margin-bottom: 4px;
     }
 
     .signal span {
-      color: var(--soft);
+      color: var(--muted);
       font-size: 0.9rem;
     }
 
     section {
-      padding: 78px 0;
+      padding: 82px 0;
     }
 
     .section-header {
@@ -262,22 +215,23 @@
       align-items: end;
       justify-content: space-between;
       gap: 24px;
-      margin-bottom: 28px;
-    }
-
-    h2 {
-      font-size: clamp(2rem, 4vw, 3.2rem);
-      line-height: 1;
-      letter-spacing: -0.05em;
+      margin-bottom: 30px;
     }
 
     .section-kicker {
-      color: var(--green);
+      color: var(--sage);
       font-weight: 900;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.13em;
       text-transform: uppercase;
       font-size: 0.78rem;
       margin-bottom: 10px;
+    }
+
+    h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.1rem, 4vw, 3.4rem);
+      line-height: 1;
+      letter-spacing: -0.045em;
     }
 
     .section-intro {
@@ -292,51 +246,29 @@
     }
 
     .card {
-      position: relative;
-      overflow: hidden;
-      padding: 24px;
+      background: var(--paper);
       border: 1px solid var(--border);
       border-radius: 28px;
-      background: var(--panel);
-      backdrop-filter: blur(16px);
+      padding: 24px;
       box-shadow: var(--shadow);
-      transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
-    }
-
-    .card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(255,45,149,0.12), transparent 34%, rgba(0,229,255,0.10));
-      opacity: 0;
       transition: 0.22s ease;
-      pointer-events: none;
     }
 
     .card:hover {
-      transform: translateY(-6px);
-      border-color: rgba(0,229,255,0.45);
-      box-shadow: 0 28px 90px rgba(0,0,0,0.4), 0 0 28px rgba(0,229,255,0.18);
-    }
-
-    .card:hover::before {
-      opacity: 1;
+      transform: translateY(-5px);
     }
 
     .card h3 {
-      position: relative;
-      font-size: 1.28rem;
+      font-size: 1.26rem;
       margin-bottom: 10px;
     }
 
     .card p,
     .card li {
-      position: relative;
       color: var(--muted);
     }
 
     .project-meta {
-      position: relative;
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
@@ -344,20 +276,16 @@
     }
 
     .tag {
-      display: inline-flex;
-      align-items: center;
-      width: fit-content;
       padding: 5px 9px;
-      border: 1px solid var(--border);
       border-radius: 999px;
-      color: white;
-      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(111, 138, 117, 0.32);
+      background: rgba(111, 138, 117, 0.09);
+      color: var(--espresso);
       font-size: 0.76rem;
-      font-weight: 700;
+      font-weight: 800;
     }
 
     .project-links {
-      position: relative;
       display: flex;
       gap: 14px;
       flex-wrap: wrap;
@@ -368,17 +296,18 @@
     .story-block {
       display: grid;
       grid-template-columns: 0.8fr 1.2fr;
-      gap: 24px;
+      gap: 26px;
       align-items: stretch;
     }
 
     .big-quote {
-      border-left: 4px solid var(--pink);
+      border-left: 4px solid var(--rose);
       padding-left: 20px;
-      color: white;
-      font-size: clamp(1.4rem, 3vw, 2.1rem);
+      color: var(--espresso);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
       line-height: 1.18;
-      letter-spacing: -0.04em;
+      letter-spacing: -0.035em;
     }
 
     .skill-list {
@@ -388,7 +317,7 @@
 
     .skill-list li {
       padding: 9px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+      border-bottom: 1px solid rgba(75, 58, 50, 0.12);
     }
 
     .skill-list li:last-child {
@@ -398,58 +327,43 @@
     .about-layout {
       display: grid;
       grid-template-columns: 0.8fr 1.2fr;
-      gap: 28px;
+      gap: 30px;
       align-items: start;
-    }
-
-    .portrait-card {
-      border: 1px solid var(--border);
-      border-radius: 28px;
-      background: rgba(255,255,255,0.045);
-      padding: 18px;
-      box-shadow: var(--shadow);
-    }
-
-    .portrait-frame img {
-      width: 70%;
-      height: auto;
-      object-fit: cover;
-      border-radius: 20px;
-      margin: auto;
-      display: block;
-    }
-
-    .contact-card {
-      margin-top: 40px;
-      background: linear-gradient(135deg, rgba(255,45,149,0.13), rgba(0,229,255,0.10), rgba(57,255,20,0.08));
     }
 
     .toggle-button {
       padding: 8px 14px;
       border-radius: 999px;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,0.06);
-      color: white;
+      border: 1px solid var(--espresso);
+      background: transparent;
+      color: var(--espresso);
       cursor: pointer;
-      font-weight: 800;
+      font-weight: 900;
+    }
+
+    .toggle-button:hover {
+      background: var(--espresso);
+      color: var(--cream);
+    }
+
+    .contact-card {
+      margin-top: 40px;
+      background: linear-gradient(135deg, rgba(185,111,111,0.12), rgba(111,138,117,0.12), rgba(185,144,95,0.10));
     }
 
     footer {
       padding: 34px 0;
-      border-top: 1px solid rgba(255,255,255,0.08);
-      color: var(--soft);
+      border-top: 1px solid var(--border);
+      color: var(--muted);
       text-align: center;
       font-size: 0.92rem;
     }
 
-    @media (max-width: 780px) {
-      .logo-banner img {
-        height: 82px;
-      }
-
+    @media (max-width: 820px) {
       nav {
+        flex-direction: column;
         justify-content: center;
-        padding: 14px 0;
+        padding: 16px 0;
       }
 
       .nav-links {
@@ -457,34 +371,29 @@
         gap: 14px;
       }
 
-      .hero {
-        min-height: auto;
-        padding-top: 58px;
-      }
-
-      h1 {
-        letter-spacing: -0.06em;
-      }
-
-      .signal-row,
+      .hero-grid,
       .story-block,
-      .about-layout {
+      .about-layout,
+      .section-header {
         grid-template-columns: 1fr;
       }
 
       .section-header {
-        flex-direction: column;
-        align-items: flex-start;
+        display: block;
+      }
+
+      .signal-row {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        letter-spacing: -0.045em;
       }
     }
   </style>
 </head>
 
 <body>
-  <div class="logo-banner">
-    <img src="images/logo.png" alt="Michelle Hand logo" />
-  </div>
-
   <header>
     <div class="container">
       <nav>
@@ -492,7 +401,7 @@
           <span class="first">MICHELLE</span>
           <span class="last">HAND</span>
         </a>
-  
+
         <div class="nav-links">
           <a href="#projects">Projects</a>
           <a href="#data-stories">Data Stories</a>
@@ -506,35 +415,41 @@
 
   <main>
     <section class="hero">
-      <div class="container hero-content">
-        <div class="eyebrow">Healthcare analytics · behavioral data · story-first insight</div>
-
-        <h1>
-          Data, but make it <span class="gradient-text">feel something.</span>
-        </h1>
-
-        <p class="hero-copy">
-          I’m a healthcare data analyst who turns claims data, messy definitions, and weird human behavior into stories people can actually use. My work blends SQL, Python, dashboards, and the occasional underground-art-project impulse.
-        </p>
-
-        <div class="button-row">
-          <a class="button primary" href="#projects">See the work</a>
-          <a class="button" href="https://github.com/michellehand" target="_blank" rel="noreferrer">GitHub</a>
-          <a class="button" href="https://www.linkedin.com/in/michellehand/" target="_blank" rel="noreferrer">LinkedIn</a>
+      <div class="container hero-grid">
+        <div class="portrait-card">
+          <img src="images/michelle-professional.png" alt="Michelle Hand portrait" />
         </div>
 
-        <div class="signal-row">
-          <div class="signal">
-            <strong>Claims analytics</strong>
-            <span>Medical, pharmacy, member, cohort logic, and ROI modeling.</span>
+        <div>
+          <div class="eyebrow">Healthcare analytics · claims strategy · data storytelling</div>
+
+          <h1>
+            Data with <span class="accent">context</span>, clarity, and consequence.
+          </h1>
+
+          <p class="hero-copy">
+            I’m a healthcare data analyst who translates complex claims data into clear, human-centered insight. My work blends SQL, Python, dashboards, cohort logic, and a journalist’s instinct for what actually matters.
+          </p>
+
+          <div class="button-row">
+            <a class="button primary" href="#projects">See the work</a>
+            <a class="button" href="https://github.com/michellehand" target="_blank" rel="noreferrer">GitHub</a>
+            <a class="button" href="https://www.linkedin.com/in/michellehand/" target="_blank" rel="noreferrer">LinkedIn</a>
           </div>
-          <div class="signal">
-            <strong>Data storytelling</strong>
-            <span>Executive-ready narratives without dashboard wallpaper.</span>
-          </div>
-          <div class="signal">
-            <strong>Human behavior</strong>
-            <span>Wearables, recovery, movement, mood, and context-rich analysis.</span>
+
+          <div class="signal-row">
+            <div class="signal">
+              <strong>Claims analytics</strong>
+              <span>Medical, pharmacy, member, cohort logic, and ROI modeling.</span>
+            </div>
+            <div class="signal">
+              <strong>Data storytelling</strong>
+              <span>Executive-ready narratives built for decision-making.</span>
+            </div>
+            <div class="signal">
+              <strong>Human context</strong>
+              <span>Analysis that respects complexity instead of flattening it.</span>
+            </div>
           </div>
         </div>
       </div>
@@ -545,10 +460,10 @@
         <div class="section-header">
           <div>
             <div class="section-kicker">Featured work</div>
-            <h2>Projects with a pulse.</h2>
+            <h2>Projects built for decisions.</h2>
           </div>
           <p class="section-intro">
-            Built for technical credibility and actual human interpretation. Because a dashboard without a point is just expensive confetti.
+            A mix of healthcare analytics, behavioral data, modeling, and visual storytelling.
           </p>
         </div>
 
@@ -609,7 +524,7 @@
       <div class="container story-block">
         <div>
           <div class="section-kicker">Data stories</div>
-          <h2>Not just charts. Arguments.</h2>
+          <h2>Not just charts. Judgment.</h2>
           <p class="section-intro">
             My favorite analytics work does more than report what happened. It defines the question, shows the tradeoffs, and gives people enough clarity to make a move.
           </p>
@@ -617,7 +532,7 @@
 
         <div class="card">
           <p class="big-quote">
-            “The job is not to make data look impressive. The job is to make the truth harder to ignore.”
+            “The job is not to make data look impressive. The job is to make the truth easier to act on.”
           </p>
         </div>
       </div>
@@ -628,7 +543,7 @@
         <div class="section-header">
           <div>
             <div class="section-kicker">Toolkit</div>
-            <h2>What I use to get there.</h2>
+            <h2>How I get there.</h2>
           </div>
         </div>
 
@@ -659,7 +574,7 @@
               <li>Executive summaries</li>
               <li>Client-ready dashboards</li>
               <li>Healthcare strategy narratives</li>
-              <li>Turning “wait, what?” into “okay, now I see it”</li>
+              <li>Turning ambiguity into usable direction</li>
             </ul>
           </div>
         </div>
@@ -678,9 +593,7 @@
 
         <div class="about-layout">
           <div class="portrait-card">
-            <div class="portrait-frame">
-              <img id="portrait" src="images/michelle-professional.png" alt="Michelle Hand portrait" />
-            </div>
+            <img id="portrait" src="images/michelle-professional.png" alt="Michelle Hand portrait" />
           </div>
 
           <div>
@@ -723,7 +636,7 @@
 
   <footer>
     <div class="container">
-      © 2026 Michelle Hand · Built with GitHub Pages · Powered by caffeine, curiosity, and suspiciously strong pattern recognition.
+      © 2026 Michelle Hand · Built with GitHub Pages · Data with context, clarity, and consequence.
     </div>
   </footer>
 </body>
