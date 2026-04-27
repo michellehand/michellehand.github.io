@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rave Recovery Data Project | Michelle Hand</title>
+  <title>Rave Health Analytics Case Study | Michelle Hand</title>
 
   <style>
     :root {
@@ -233,6 +233,42 @@
       margin-bottom: 8px;
     }
 
+
+
+    .results-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 18px;
+      overflow: hidden;
+      border-radius: 18px;
+    }
+
+    .results-table th,
+    .results-table td {
+      text-align: left;
+      padding: 14px 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+      color: var(--muted);
+    }
+
+    .results-table th {
+      color: white;
+      background: rgba(255,255,255,0.08);
+      font-weight: 900;
+    }
+
+    .code-pill {
+      display: inline-block;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(0,229,255,0.10);
+      border: 1px solid rgba(0,229,255,0.28);
+      color: var(--cyan);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.9rem;
+      margin-top: 10px;
+    }
+
     .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
 
     .tag {
@@ -292,6 +328,7 @@
           <a href="#overview">Overview</a>
           <a href="#method">Method</a>
           <a href="#insights">Insights</a>
+          <a href="#notebook">Notebook</a>
           <a href="#reflection">Reflection</a>
         </div>
       </nav>
@@ -301,13 +338,14 @@
   <main>
     <section class="hero">
       <div class="container">
-        <div class="eyebrow">Behavioral analytics · Tableau · personal data</div>
-        <h1>Rave Recovery <span class="gradient-text">Data Project</span></h1>
+        <div class="eyebrow">Behavioral analytics · Python · Tableau · predictive modeling</div>
+        <h1>Rave Health <span class="gradient-text">Analytics</span></h1>
         <p class="hero-copy">
-          An event-level analytics project exploring how music events, movement, sleep, social context, and environment shape next-day recovery and wellbeing.
+          A personal data science case study modeling how event intensity, substance intensity, sleep baseline, and recovery patterns interact after music events.
         </p>
         <div class="button-row">
           <a class="button primary" href="#case-study">Explore the case study</a>
+          <a class="button" href="Rave_Health_NTB_Simplified_Methodology_Models.ipynb">View notebook</a>
           <a class="button" href="index.html">Back to portfolio</a>
         </div>
 
@@ -320,21 +358,21 @@
         <div class="section-kicker">Overview</div>
         <h2>The question</h2>
         <p class="section-intro">
-          What actually predicts a high-value night out: the music, the crowd, the substance intensity, the social connection, the movement, or the recovery pattern afterward?
+          How much does event intensity affect next-day sleep, how long does recovery take, and can a small personal dataset still produce useful predictive signals?
         </p>
 
         <div class="metric-grid">
           <div class="metric">
-            <strong>Event-level</strong>
-            <span>Each row represents a specific show, festival, or venue event.</span>
+            <strong>~12–16</strong>
+            <span>Modeling observations after cleaning and joining event + sleep data.</span>
           </div>
           <div class="metric">
-            <strong>+1 day</strong>
-            <span>Next-day recovery metrics connect the event to the aftermath.</span>
+            <strong>0.76 R²</strong>
+            <span>Intensity score explained a large share of sleep-impact variance.</span>
           </div>
           <div class="metric">
-            <strong>Mixed data</strong>
-            <span>Combines subjective ratings with wearable health data.</span>
+            <strong>&lt;1 day</strong>
+            <span>Recovery model mean absolute error was under one day.</span>
           </div>
         </div>
       </div>
@@ -352,6 +390,7 @@
           <button class="tab-button active" onclick="showTab('problem', this)">Problem</button>
           <button class="tab-button" onclick="showTab('data', this)">Data</button>
           <button class="tab-button" onclick="showTab('design', this)">Dashboard</button>
+          <button class="tab-button" onclick="showTab('models', this)">Models</button>
           <button class="tab-button" onclick="showTab('interpretation', this)">Interpretation</button>
         </div>
 
@@ -359,7 +398,7 @@
           <div id="problem" class="tab-panel active">
             <h3>Problem framing</h3>
             <p>
-              Most personal health data is collected passively but rarely interpreted in context. This project asks whether event-specific details — genre, venue, crowd density, substance intensity, embodiment, and social connection — can explain patterns in sleep and next-day energy.
+              Most personal health data is collected passively but rarely interpreted in context. This project asks whether event-specific variables — intensity, substance intensity, baseline sleep, environment, and embodiment — can explain patterns in next-day sleep and recovery.
             </p>
             <div class="tag-row">
               <span class="tag">Behavioral analytics</span>
@@ -371,7 +410,7 @@
           <div id="data" class="tab-panel">
             <h3>Data structure</h3>
             <p>
-              The dataset is built at the event level and joined to wearable-derived recovery metrics by date. Key fields include event type, genre, crowd size, density, visual intensity, substance intensity, embodiment, energy before, steps, bedtime, wake time, sleep quality, and next-day mood.
+              The dataset is built at the event level and joined to sleep exports by date. Key fields include event type, genre, crowd size, density, visual intensity, substance intensity, embodiment, energy before, sleep baseline, next-day sleep, and recovery days.
             </p>
             <div class="tag-row">
               <span class="tag">Garmin</span>
@@ -383,12 +422,26 @@
           <div id="design" class="tab-panel">
             <h3>Dashboard design</h3>
             <p>
-              The dashboard uses compact comparisons to show how event intensity relates to recovery. The visual style intentionally mirrors the subject matter while still keeping the analytical structure readable.
+              The dashboard uses compact comparisons to show how event intensity relates to sleep impact and recovery. The visual style mirrors the subject matter while keeping the analytical structure readable.
             </p>
             <div class="tag-row">
               <span class="tag">Tableau</span>
               <span class="tag">Visual storytelling</span>
               <span class="tag">Context-first design</span>
+            </div>
+          </div>
+
+
+          <div id="models" class="tab-panel">
+            <h3>Predictive modeling</h3>
+            <p>
+              Because the dataset is small, I used leave-one-out cross-validation instead of a standard train/test split. I compared simple linear models against random forest models to test whether nonlinear complexity improved prediction.
+            </p>
+            <div class="tag-row">
+              <span class="tag">Python</span>
+              <span class="tag">LOOCV</span>
+              <span class="tag">Linear regression</span>
+              <span class="tag">Random forest</span>
             </div>
           </div>
 
@@ -418,11 +471,15 @@
           </div>
           <div class="card">
             <h3>2. Joined by date</h3>
-            <p>Connected event dates to post-event recovery windows, especially next-day sleep and energy indicators.</p>
+            <p>Connected event dates to post-event sleep windows, including baseline sleep, next-day sleep, and recovery days.</p>
           </div>
           <div class="card">
-            <h3>3. Visualized patterns</h3>
-            <p>Built Tableau views to compare event intensity, sleep recovery, and subjective post-event experience.</p>
+            <h3>3. Created derived metrics</h3>
+            <p>Built an intensity score, sleep drop from baseline, days to recover, and a high-value-night indicator.</p>
+          </div>
+          <div class="card">
+            <h3>4. Modeled outcomes</h3>
+            <p>Used leave-one-out validation to compare linear regression and random forest models for sleep and recovery outcomes.</p>
           </div>
         </div>
       </div>
@@ -434,19 +491,51 @@
         <h2>What this project shows.</h2>
 
         <details open>
-          <summary>Insight 1: Recovery is contextual.</summary>
-          <p>Sleep and next-day energy do not exist in isolation. The value of the event, the social experience, movement, and emotional state all matter.</p>
+          <summary>Insight 1: Intensity strongly predicts sleep impact.</summary>
+          <p>Higher intensity events were associated with larger next-day sleep drops from baseline. The simple intensity model explained about 76% of the variance in sleep impact.</p>
         </details>
 
         <details>
-          <summary>Insight 2: Subjective ratings are useful signals.</summary>
-          <p>Variables like embodiment, outfit expression, and notable connection may seem soft, but they capture dimensions that wearable data misses.</p>
+          <summary>Insight 2: Substance intensity is a key recovery signal.</summary>
+          <p>Substance intensity was associated with longer recovery time and carried most of the predictive weight in the sleep-after-rave random forest model.</p>
         </details>
 
         <details>
-          <summary>Insight 3: The dataset gets stronger over time.</summary>
-          <p>With more events, this can evolve from storytelling dashboard to exploratory modeling project with stronger pattern detection.</p>
+          <summary>Insight 3: Simple models performed as well as complex models.</summary>
+          <p>Random forest models did not meaningfully outperform linear models, suggesting the current signal is mostly linear and driven by a small number of variables.</p>
         </details>
+
+        <div class="card" style="margin-top: 22px;">
+          <h3>Model performance</h3>
+          <table class="results-table">
+            <thead>
+              <tr><th>Outcome</th><th>Linear MAE</th><th>Random Forest MAE</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Sleep after rave</td><td>11.31</td><td>11.02</td></tr>
+              <tr><td>Sleep impact from baseline</td><td>11.31</td><td>11.04</td></tr>
+              <tr><td>Recovery time</td><td>0.73</td><td>0.77</td></tr>
+            </tbody>
+          </table>
+          <p style="margin-top: 16px; color: var(--muted);">Regression models were evaluated with mean absolute error using leave-one-out cross-validation.</p>
+        </div>
+      </div>
+    </section>
+
+
+    <section id="notebook">
+      <div class="container">
+        <div class="section-kicker">Notebook</div>
+        <h2>Reproducible analysis.</h2>
+        <p class="section-intro">
+          The full Jupyter notebook includes the cleaning pipeline, feature engineering, intensity score methodology, model validation, feature importance, and prediction function.
+        </p>
+        <div class="card">
+          <h3>Open the notebook</h3>
+          <p>Review the Python workflow behind the case study, including the sleep join, derived metrics, leave-one-out validation, and final scenario simulator.</p>
+          <a class="button primary" style="margin-top: 18px;" href="Rave_Health_NTB_Simplified_Methodology_Models.ipynb">View Jupyter Notebook</a>
+          <div class="code-pill">predict_event_scenario(sleep_baseline=85, intensity_score=75)</div>
+        </div>
       </div>
     </section>
 
@@ -455,7 +544,7 @@
         <div class="section-kicker">Reflection</div>
         <h2>Why it matters.</h2>
         <div class="callout">
-          This project is both analytical and personal: a way to show that data storytelling does not have to be sterile. It can be rigorous, weird, human, and useful at the same time. Tiny spreadsheet goblin, big feelings, valid methodology.
+          This project is both analytical and personal: a way to show that data storytelling does not have to be sterile. It can be rigorous, weird, human, and useful at the same time. The strongest lesson: more complex models are not always better. Sometimes the cleanest signal is the one that tells the truth fastest.
         </div>
       </div>
     </section>
@@ -463,7 +552,7 @@
 
   <footer>
     <div class="container">
-      © 2026 Michelle Hand · Rave Recovery Data Project
+      © 2026 Michelle Hand · Rave Health Analytics
     </div>
   </footer>
 
