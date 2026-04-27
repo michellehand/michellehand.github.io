@@ -85,14 +85,18 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 26px 0;
+      padding: 80px 0; /* MUCH bigger */
       border-bottom: 1px solid rgba(255,255,255,0.08);
     }
-
+    
     .logo-banner img {
-      height: 105px;
+      height: 180px; /* bigger logo */
       width: auto;
-      filter: drop-shadow(0 0 20px rgba(0,229,255,0.18));
+      filter: drop-shadow(0 0 30px rgba(0,229,255,0.25));
+    }
+
+    .logo-banner {
+      min-height: 60vh; /* THIS is the magic */
     }
 
     header {
@@ -103,7 +107,13 @@
       background: rgba(7,7,13,0.72);
       border-bottom: 1px solid rgba(255,255,255,0.08);
     }
-
+    .nav-brand {
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.95rem;
+      color: white;
+    }
     nav {
       min-height: 64px;
       display: flex;
@@ -465,6 +475,7 @@
 
   <header>
     <div class="container">
+      <div class="nav-brand">Michelle Hand</div>
       <nav>
         <div class="nav-links">
           <a href="#projects">Projects</a>
