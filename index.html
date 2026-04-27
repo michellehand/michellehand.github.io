@@ -117,12 +117,17 @@
       text-transform: uppercase;
       font-size: 1rem;
       display: flex;
-      gap: 6px;
+      gap: 8px;
+      align-items: center;
+      color: white;
+    }
+    
+    .nav-brand:hover {
+      text-shadow: none;
     }
     
     .nav-brand .first {
       color: var(--pink);
-      text-shadow: 0 0 12px rgba(255,45,149,0.6);
     }
     
     .nav-brand .last {
@@ -482,10 +487,12 @@
 
   <header>
     <div class="container">
-      <div class="nav-brand">
-          <span class="first">MICHELLE</span> <span class="last">HAND</span>
-      </div>
       <nav>
+        <a class="nav-brand" href="index.html">
+          <span class="first">MICHELLE</span>
+          <span class="last">HAND</span>
+        </a>
+  
         <div class="nav-links">
           <a href="#projects">Projects</a>
           <a href="#data-stories">Data Stories</a>
