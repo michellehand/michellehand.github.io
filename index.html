@@ -78,25 +78,21 @@
       color: white;
       text-shadow: 0 0 12px rgba(0,229,255,0.7);
     }
-
+    
     .logo-banner {
       width: 100%;
+      min-height: 80vh; /* take up MOST of screen */
       background: #000;
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 80px 0; /* MUCH bigger */
-      border-bottom: 1px solid rgba(255,255,255,0.08);
     }
     
     .logo-banner img {
-      height: 180px; /* bigger logo */
-      width: auto;
-      filter: drop-shadow(0 0 30px rgba(0,229,255,0.25));
-    }
-
-    .logo-banner {
-      min-height: 60vh; /* THIS is the magic */
+      width: 420px;  /* THIS is what makes it big */
+      max-width: 80vw; /* responsive safety */
+      height: auto;
+      filter: drop-shadow(0 0 40px rgba(0,229,255,0.25));
     }
 
     header {
