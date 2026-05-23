@@ -179,7 +179,7 @@
         </div>
 
         <aside class="cover-card" aria-label="911 Weather Impact Study cover image">
-          <img src="911_weather_civic_assets/911-weather-cover.png" alt="911 Weather Impact Study Seattle cover artwork" />
+          <img src="images/911-weather-cover.png" alt="911 Weather Impact Study Seattle cover artwork" />
         </aside>
       </div>
       <div class="container metric-strip">
@@ -250,9 +250,9 @@
         </div>
 
         <div class="grid" style="margin-top:18px;">
-          <article class="card figure wide"><img src="911_weather_civic_assets/daily_seattle_911_volume.png" alt="Daily Seattle 911 call volume line chart" /><div class="figure-caption"><strong>Daily Seattle 911 call volume.</strong> This establishes the broader dispatch-demand context before narrowing to traffic-related calls.</div></article>
-          <article class="card figure"><img src="911_weather_civic_assets/weather_correlation_matrix.png" alt="Correlation heatmap for weather and traffic-call features" /><div class="figure-caption"><strong>Weather relationship check.</strong> Temperature, precipitation, and calendar variables were explored before modeling.</div></article>
-          <article class="card figure"><img src="911_weather_civic_assets/rf_lag_feature_importance.png" alt="Random forest feature importance with lag features" /><div class="figure-caption"><strong>Feature importance.</strong> The 7-day average traffic-call feature was the strongest predictor, followed by day-of-week and prior-day volume.</div></article>
+          <article class="card figure wide"><img src="images/daily_seattle_911_volume.png" alt="Daily Seattle 911 call volume line chart" /><div class="figure-caption"><strong>Daily Seattle 911 call volume.</strong> This establishes the broader dispatch-demand context before narrowing to traffic-related calls.</div></article>
+          <article class="card figure"><img src="images/weather_correlation_matrix.png" alt="Correlation heatmap for weather and traffic-call features" /><div class="figure-caption"><strong>Weather relationship check.</strong> Temperature, precipitation, and calendar variables were explored before modeling.</div></article>
+          <article class="card figure"><img src="images/rf_lag_feature_importance.png" alt="Random forest feature importance with lag features" /><div class="figure-caption"><strong>Feature importance.</strong> The 7-day average traffic-call feature was the strongest predictor, followed by day-of-week and prior-day volume.</div></article>
         </div>
       </div>
     </section>
@@ -271,8 +271,8 @@
 <tr><td><strong>RF + Lag Features</strong></td><td>21.08</td><td>27.50</td><td>0.534</td></tr></tbody>
         </table>
         <div class="grid" style="margin-top:18px;">
-          <article class="card figure"><img src="911_weather_civic_assets/actual_vs_predicted_traffic_calls.png" alt="Actual versus predicted traffic calls line chart" /><div class="figure-caption"><strong>Actual vs predicted.</strong> The lag-enhanced random forest followed the general shape of daily traffic call volume but still missed some spikes.</div></article>
-          <article class="card figure"><img src="911_weather_civic_assets/residuals.png" alt="Residuals chart for traffic call prediction model" /><div class="figure-caption"><strong>Residual check.</strong> Error remained around sudden operational spikes, which is expected for event-driven public-safety data.</div></article>
+          <article class="card figure"><img src="images/actual_vs_predicted_traffic_calls.png" alt="Actual versus predicted traffic calls line chart" /><div class="figure-caption"><strong>Actual vs predicted.</strong> The lag-enhanced random forest followed the general shape of daily traffic call volume but still missed some spikes.</div></article>
+          <article class="card figure"><img src="images/residuals.png" alt="Residuals chart for traffic call prediction model" /><div class="figure-caption"><strong>Residual check.</strong> Error remained around sudden operational spikes, which is expected for event-driven public-safety data.</div></article>
         </div>
       </div>
     </section>
