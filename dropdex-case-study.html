@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DropDex Case Study | Michelle Hand</title>
+  <meta name="description" content="A portfolio case study for DropDex, an experimental audio analytics project that turns bass drops into measurable events, classifications, and archive-ready specimens." />
+
+  <style>
+    :root {
+      --ink: #141017;
+      --plum: #25172d;
+      --void: #0f0b13;
+      --cream: #fff7ed;
+      --paper: #fffaf3;
+      --muted: #746a75;
+      --violet: #7c4dff;
+      --magenta: #d946ef;
+      --cyan: #22d3ee;
+      --acid: #b7f34b;
+      --amber: #ffb84d;
+      --rose: #ef6f91;
+      --border: rgba(37, 23, 45, 0.16);
+      --shadow: 0 28px 90px rgba(20, 16, 23, 0.20);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 12% 12%, rgba(217, 70, 239, 0.18), transparent 24%),
+        radial-gradient(circle at 90% 8%, rgba(34, 211, 238, 0.18), transparent 25%),
+        radial-gradient(circle at 78% 78%, rgba(183, 243, 75, 0.12), transparent 26%),
+        linear-gradient(135deg, #fff7ed 0%, #f7ecff 45%, #effcff 100%);
+      line-height: 1.68;
+      overflow-x: hidden;
+    }
+
+    a { color: var(--violet); text-decoration: none; font-weight: 850; }
+    a:hover { color: var(--magenta); }
+    .container { width: min(1120px, 92%); margin: 0 auto; position: relative; z-index: 2; }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(255, 247, 237, 0.82);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav {
+      min-height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+    }
+
+    .brand {
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      color: var(--ink);
+      font-weight: 950;
+    }
+
+    .nav-links { display: flex; gap: 20px; flex-wrap: wrap; font-size: 0.9rem; }
+
+    .hero {
+      position: relative;
+      padding: 92px 0 78px;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(rgba(20, 16, 23, 0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(20, 16, 23, 0.045) 1px, transparent 1px),
+        radial-gradient(circle at 76% 32%, rgba(124, 77, 255, 0.18), transparent 24%);
+      background-size: 34px 34px, 34px 34px, auto;
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 42px;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--plum);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-weight: 950;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-size: 0.76rem;
+      margin-bottom: 18px;
+    }
+
+    .kicker::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--magenta), var(--cyan));
+      box-shadow: 0 0 0 6px rgba(217, 70, 239, 0.12);
+    }
+
+    h1, h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      letter-spacing: -0.05em;
+      line-height: 1;
+    }
+
+    h1 {
+      font-size: clamp(3.3rem, 7vw, 6.9rem);
+      max-width: 860px;
+      margin-bottom: 24px;
+    }
+
+    .accent {
+      background: linear-gradient(110deg, var(--violet), var(--magenta), var(--cyan));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .lede {
+      color: var(--muted);
+      font-size: clamp(1.08rem, 2vw, 1.26rem);
+      max-width: 780px;
+      margin-bottom: 20px;
+    }
+
+    .button-row { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 28px; }
+    .button {
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 20px;
+      border-radius: 999px;
+      border: 1px solid var(--plum);
+      color: var(--plum);
+      background: rgba(255,255,255,0.46);
+      font-weight: 950;
+    }
+    .button.primary {
+      background: var(--void);
+      color: white;
+      border-color: var(--void);
+    }
+    .button:hover { background: var(--magenta); border-color: var(--magenta); color: white; }
+
+    .lab-card {
+      background: rgba(255, 250, 243, 0.88);
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .lab-header {
+      background: var(--void);
+      color: white;
+      padding: 16px 18px;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.76rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .lab-body { padding: 22px; }
+
+    .signal-visual {
+      height: 270px;
+      border-radius: 24px;
+      border: 1px solid rgba(37, 23, 45, 0.14);
+      background:
+        linear-gradient(90deg, transparent 0 5%, rgba(34,211,238,0.26) 5% 5.6%, transparent 5.6% 10%),
+        radial-gradient(circle at 68% 32%, rgba(217,70,239,0.72), transparent 10%),
+        radial-gradient(circle at 36% 64%, rgba(34,211,238,0.54), transparent 13%),
+        radial-gradient(circle at 72% 72%, rgba(183,243,75,0.45), transparent 12%),
+        linear-gradient(135deg, #1a1022 0%, #21122f 46%, #0e2630 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .signal-visual::before {
+      content: "";
+      position: absolute;
+      inset: 22px;
+      background: repeating-linear-gradient(90deg, rgba(255,255,255,0.08) 0 2px, transparent 2px 18px);
+      clip-path: polygon(0% 74%, 5% 62%, 9% 68%, 13% 34%, 17% 72%, 22% 45%, 27% 80%, 33% 18%, 40% 70%, 48% 30%, 56% 76%, 64% 26%, 72% 82%, 80% 38%, 88% 67%, 95% 42%, 100% 74%, 100% 100%, 0% 100%);
+      opacity: 0.92;
+    }
+
+    .signal-visual::after {
+      content: "AUDIO EVIDENCE // CLASSIFICATION SYSTEM";
+      position: absolute;
+      left: 18px;
+      bottom: 16px;
+      color: rgba(255,255,255,0.72);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      font-size: 0.72rem;
+    }
+
+    .mini-metrics {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .mini-metric {
+      background: rgba(255,255,255,0.72);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 14px;
+    }
+
+    .mini-metric strong {
+      display: block;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      color: var(--violet);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.72rem;
+      margin-bottom: 4px;
+    }
+
+    .mini-metric span { color: var(--muted); font-weight: 750; }
+
+    section { padding: 78px 0; }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 0.72fr 1.28fr;
+      gap: 34px;
+      align-items: end;
+      margin-bottom: 28px;
+    }
+
+    h2 { font-size: clamp(2.25rem, 4.4vw, 4rem); }
+    .section-copy { color: var(--muted); max-width: 780px; }
+
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
+
+    .card {
+      background: rgba(255, 250, 243, 0.86);
+      border: 1px solid var(--border);
+      border-radius: 26px;
+      padding: 24px;
+      box-shadow: 0 18px 52px rgba(20, 16, 23, 0.10);
+    }
+
+    .card h3 { font-size: 1.2rem; margin-bottom: 10px; }
+    .card p, .card li { color: var(--muted); }
+    .card ul { padding-left: 20px; }
+
+    .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+    .tag {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.06em;
+      padding: 5px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(124, 77, 255, 0.35);
+      background: rgba(124, 77, 255, 0.08);
+      color: var(--plum);
+      font-weight: 900;
+    }
+
+    .pipeline { display: grid; gap: 16px; counter-reset: step; }
+    .step {
+      display: grid;
+      grid-template-columns: 58px 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+    .step::before {
+      counter-increment: step;
+      content: counter(step, decimal-leading-zero);
+      width: 58px;
+      height: 58px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--violet), var(--magenta));
+      color: white;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-weight: 950;
+    }
+
+    .metric-table {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border-radius: 20px;
+      background: rgba(255, 250, 243, 0.92);
+      box-shadow: 0 18px 52px rgba(20, 16, 23, 0.08);
+    }
+    .metric-table th, .metric-table td {
+      padding: 15px 16px;
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+      vertical-align: top;
+    }
+    .metric-table th {
+      background: var(--void);
+      color: white;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.74rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .metric-table tr:last-child td { border-bottom: none; }
+    .metric-table td { color: var(--muted); }
+
+    .note {
+      border-left: 4px solid var(--magenta);
+      background: rgba(217, 70, 239, 0.07);
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .cta {
+      background:
+        radial-gradient(circle at 82% 18%, rgba(34,211,238,0.22), transparent 24%),
+        linear-gradient(135deg, #130d19, #25172d 52%, #0d2730);
+      color: white;
+      border-radius: 32px;
+      padding: 34px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .cta p { color: rgba(255,255,255,0.78); max-width: 780px; margin-top: 12px; }
+    .cta .kicker { color: white; }
+    .cta .button { color: white; border-color: white; }
+    .cta .button.primary { background: white; color: var(--plum); border-color: white; }
+
+    footer {
+      padding: 34px 0;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.92rem;
+    }
+
+    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 840px) {
+      nav { flex-direction: column; justify-content: center; padding: 16px 0; }
+      .nav-links { justify-content: center; gap: 14px; }
+      .hero { padding-top: 58px; }
+      .hero-grid, .section-head, .split { grid-template-columns: 1fr; }
+      .mini-metrics { grid-template-columns: 1fr; }
+      .step { grid-template-columns: 1fr; }
+      .step::before { width: 50px; height: 50px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <a class="brand" href="index.html">Michelle Hand · Portfolio</a>
+        <div class="nav-links">
+          <a href="#overview">Overview</a>
+          <a href="#system">System</a>
+          <a href="#metrics">Metrics</a>
+          <a href="#privacy">Scope</a>
+          <a href="#value">Value</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="kicker">Experimental audio analytics</div>
+          <h1>Turning bass drops into <span class="accent">measurable events.</span></h1>
+          <p class="lede">
+            DropDex is an independent audio analytics lab exploring the anatomy of electronic music drops: how they build, hit, release, and behave as measurable sound events.
+          </p>
+          <p class="lede">
+            This portfolio overview focuses on the product, system design, and analytical workflow. The underlying dataset, scoring logic, and full archive remain private while the project is in development.
+          </p>
+          <div class="button-row">
+            <a class="button primary" href="https://dropdexlabs.com" target="_blank" rel="noreferrer">Visit DropDex</a>
+            <a class="button" href="index.html">Back to portfolio</a>
+          </div>
+        </div>
+
+        <aside class="lab-card" aria-label="DropDex project summary">
+          <div class="lab-header">
+            <span>DropDex Lab Brief</span>
+            <span>Status: Private Build</span>
+          </div>
+          <div class="lab-body">
+            <div class="signal-visual" role="img" aria-label="Abstract audio waveform and spectrogram-inspired visual"></div>
+            <div class="mini-metrics">
+              <div class="mini-metric"><strong>Unit</strong><span>Audio drop</span></div>
+              <div class="mini-metric"><strong>Frame</strong><span>Tension + release</span></div>
+              <div class="mini-metric"><strong>Output</strong><span>Ranked archive</span></div>
+              <div class="mini-metric"><strong>Format</strong><span>Cards + pages</span></div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="overview">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Project overview</div>
+            <h2>The question: why do some drops hit harder?</h2>
+          </div>
+          <p class="section-copy">
+            DropDex begins with a simple creative question and turns it into a structured analytics system. Each drop is treated as an observable event, then documented, analyzed, classified, and prepared for archive display.
+          </p>
+        </div>
+
+        <div class="grid">
+          <article class="card">
+            <h3>What it is</h3>
+            <p>A research and product experiment that studies bass drops as measurable audio events rather than subjective reactions alone.</p>
+            <div class="tag-row">
+              <span class="tag">AUDIO ANALYTICS</span>
+              <span class="tag">SYSTEM DESIGN</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>What it produces</h3>
+            <p>A private archive of drop entries, model-derived scores, classes, rarity tiers, card profiles, and future QR-linked specimen pages.</p>
+            <div class="tag-row">
+              <span class="tag">ARCHIVE</span>
+              <span class="tag">CLASSIFICATION</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>What it demonstrates</h3>
+            <p>Feature engineering, repeatable scoring design, visual product thinking, and translation of complex signal data into an accessible public-facing system.</p>
+            <div class="tag-row">
+              <span class="tag">PYTHON</span>
+              <span class="tag">FEATURE ENGINEERING</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="system">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="kicker">System design</div>
+            <h2>Document. Analyze. Classify. Collect.</h2>
+          </div>
+          <p class="section-copy">
+            The public DropDex site describes the core protocol as a progression from raw music moment to structured archive object. That workflow is the foundation of the analytical system.
+          </p>
+        </div>
+
+        <div class="pipeline">
+          <article class="step card">
+            <div>
+              <h3>Document</h3>
+              <p>Log each drop as an archive entry with track details, timing, class, rank, and observed behavior.</p>
+            </div>
+          </article>
+          <article class="step card">
+            <div>
+              <h3>Analyze</h3>
+              <p>Measure audio features that describe impact, build-up, frequency energy, and release behavior.</p>
+            </div>
+          </article>
+          <article class="step card">
+            <div>
+              <h3>Classify</h3>
+              <p>Translate measurements into ranking logic, drop classes, rarity tiers, and card-ready metadata.</p>
+            </div>
+          </article>
+          <article class="step card">
+            <div>
+              <h3>Collect</h3>
+              <p>Turn each archived drop into a digital or physical specimen with stats, artwork, rarity, and archive links.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="metrics">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Metric framework</div>
+            <h2>A model for behavior, not taste.</h2>
+          </div>
+          <p class="section-copy">
+            DropDex does not decide whether a song is good. The model is designed to describe how a drop behaves: how heavy it lands, how intense the release is, and what kind of audio signature it creates.
+          </p>
+        </div>
+
+        <table class="metric-table" aria-label="DropDex public metric framework">
+          <thead>
+            <tr>
+              <th>Metric</th>
+              <th>Public interpretation</th>
+              <th>Portfolio relevance</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Weight</strong></td>
+              <td>Low-end mass, bass pressure, and perceived heaviness.</td>
+              <td>Shows how subjective audio language can be converted into measurable feature concepts.</td>
+            </tr>
+            <tr>
+              <td><strong>Shock</strong></td>
+              <td>The immediate release of energy when the drop hits.</td>
+              <td>Captures event timing and contrast between build-up and impact.</td>
+            </tr>
+            <tr>
+              <td><strong>Aggression</strong></td>
+              <td>Intensity, attack, roughness, and force in the drop section.</td>
+              <td>Demonstrates composite scoring and engineered signal interpretation.</td>
+            </tr>
+            <tr>
+              <td><strong>Tension</strong></td>
+              <td>How strongly the build-up prepares the listener for impact.</td>
+              <td>Frames a pre-event period as an analyzable context window.</td>
+            </tr>
+            <tr>
+              <td><strong>Brightness</strong></td>
+              <td>High-frequency energy, presence, and sharpness.</td>
+              <td>Connects frequency-domain characteristics to interpretable categories.</td>
+            </tr>
+            <tr>
+              <td><strong>Power</strong></td>
+              <td>The combined DropDex score used for global ranking.</td>
+              <td>Shows ranking system design while keeping proprietary scoring details private.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="privacy">
+      <div class="container split">
+        <article class="card note">
+          <div class="kicker">Protected scope</div>
+          <h2>What is intentionally private.</h2>
+          <ul style="margin-top:20px;">
+            <li>The source dataset and full ranked archive.</li>
+            <li>Detailed scoring formulas and weighting decisions.</li>
+            <li>Intermediate feature tables and model calibration outputs.</li>
+            <li>Unreleased card designs, batch generation logic, and print-ready assets.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <div class="kicker">Public scope</div>
+          <h2>What this case study can show.</h2>
+          <ul style="margin-top:20px;">
+            <li>The product concept and analytical workflow.</li>
+            <li>The public metric framework and classification vocabulary.</li>
+            <li>The system architecture behind turning audio moments into archive objects.</li>
+            <li>The broader analytics skillset: signal design, ranking, documentation, and storytelling.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="value">
+      <div class="container">
+        <div class="cta">
+          <div class="kicker">Portfolio value</div>
+          <h2>A creative system built with analytical discipline.</h2>
+          <p>
+            DropDex demonstrates the same analytical spine as my other work: identify a real-world phenomenon, define the unit of analysis, engineer signals, build a repeatable framework, and translate the output into a public-facing story.
+          </p>
+          <p>
+            The project is still being assembled, but the system already reflects a complete product-thinking workflow: data pipeline, model logic, visual identity, archive design, and future collectible/card infrastructure.
+          </p>
+          <div class="button-row">
+            <a class="button primary" href="https://dropdexlabs.com" target="_blank" rel="noreferrer">Visit DropDex Labs</a>
+            <a class="button" href="index.html">Back to portfolio</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © 2026 Michelle Hand · DropDex Case Study · Experimental audio analytics, classification systems, and archive design.
+    </div>
+  </footer>
+
+  <script>
+    const fadeElements = document.querySelectorAll('.card, .section-head, .metric-table, .cta, .lab-card');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.12 });
+
+    fadeElements.forEach(el => {
+      el.classList.add('fade-in');
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
